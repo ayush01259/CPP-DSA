@@ -35,9 +35,30 @@ void maxSubarraySum2 (int *arr, int n ){
     cout<<"Maximum subarray sum = "<<maxSum<< endl;
 }
 
+
+// kadane's equation way to find the max sum
+void maxsubarray3(int *arr, int n ){
+    int maxsum = INT_MIN;
+    int cursum = 0;
+    for(int i =0; i<n; i++){
+        cursum += arr[i];
+        maxsum = max(maxsum, cursum);
+        if(cursum <0){
+            cursum = 0;
+        }
+    }
+    cout<<"Maximum subarray sum = "<<maxsum<<endl;
+}
+
+
+
+
+
 int main(){
     int arr[6] = {2,-3, 6, -5, 4,2 };
     int n = sizeof(arr)/ sizeof(int);
-    maxSubarraySum2(arr, n);
+    // maxSubarraySum2(arr, n);
+    maxsubarray3(arr, n);
     return 0;
+    
 }
