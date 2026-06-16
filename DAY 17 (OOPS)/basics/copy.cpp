@@ -29,5 +29,6 @@ int main(){
     cout<<c2.name<<endl;
     cout<<c2.color<<endl;
     cout<<*c2.mileage<<endl;
+    // in shallow copy changing mileage of c2 would have affect the mileage of c1 but after we makeit deep copy any changes to c2 doesnt affect the c1
     return 0;
 }
