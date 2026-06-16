@@ -1,5 +1,3 @@
-//deep and shallow copy concepts
-
 #include<iostream>
 using namespace std;
 class Car{
@@ -18,16 +16,26 @@ class Car{
         name = original.name;
         color = original.color;
         mileage = new int;
-        // would make it deep copy as it was shallow copy back then 
         *mileage = *original.mileage;
+    }
+
+    // destructor
+    ~Car(){
+        cout<<"deleting object...\n";
+//  would delete statically created memory but for dynamically created memory we have to delete it own
+        if(mileage != NULL){
+            delete mileage;
+            mileage = NULL;
+        }
+        //this time dynamically created memory would be deleted too
     }
 };
 int main(){
     
     Car c1("Toyota LC","Black");
-    Car c2(c1);
-    cout<<c2.name<<endl;
-    cout<<c2.color<<endl;
-    cout<<*c2.mileage<<endl;
+    
+    cout<<c1.name<<endl;
+    cout<<c1.color<<endl;
+    cout<<*c1.mileage<<endl;
     return 0;
 }
